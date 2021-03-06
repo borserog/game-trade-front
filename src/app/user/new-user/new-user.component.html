@@ -1,1 +1,28 @@
-<p>new-user works!</p>
+<div class="w-100 h-100 d-flex justify-content-center align-items-center">
+  <div
+    class="form-container d-flex justify-content-center align-items-center flex-column w-70 p-5 border border-primary">
+    <h2 class="mb-4">Cadastrar</h2>
+
+    <div class="mb-3">
+      <label for="name" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="name" placeholder="John Doe">
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="email@example.com">
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password">
+    </div>
+
+    <div class="mb-3">
+      <label for="confirm" class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" id="confirm">
+    </div>
+
+    <button class="btn btn-secondary submit-button" type="button" [routerLink]="['../login']">Cadastrar</button>
+  </div>
+</div>
