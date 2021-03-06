@@ -1,0 +1,25 @@
+.login-section {
+  height: 100vh;
+}
+
+.game-trade-image {
+  background: radial-gradient(circle, rgba(0,0,0,0.12414140460871848) 0%, rgba(0,0,0,1) 170%);
+  height: 100vh;
+
+  &:before {
+    background: url("../../assets/login-bg.jpg");
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+  }
+
+  &__text {
+    background: rgba(0,0,0, .5);
+
+    &__header {
+      text-shadow: 1px 1px 15px rgba(white, .6);
+    }
+  }
+}
