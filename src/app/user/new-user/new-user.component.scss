@@ -1,4 +1,10 @@
 .form-container {
-  background: white;
   border-radius: 10px;
+  position: relative;
+
+  &__link {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
 }
