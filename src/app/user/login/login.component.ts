@@ -14,30 +14,31 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router
-  ) { 
+  ) {
     this.user = new User();
   }
 
   ngOnInit(): void {
   }
 
-  handleLoginSubmit() {
+  // TODO store logged user credentials
+  handleLoginSubmit(): void {
     const credentials = {
       email: this.user.email,
       password: this.user.password
     };
 
-    this.userService.logIn(credentials).subscribe(user => {
-      if(user) {
+    this.userService.logIn(credentials).subscribe(async user => {
+      if (user) {
         alert(`Bem vindo, ${user.firstName}!`);
-        this.router.navigate(['/main/home']);
+        await this.router.navigate(['/market']);
         return;
       }
 
-      alert("Não existe");
+      alert('Não existe');
     }, () => {
-      alert("Erro na conexão");
-    })
+      alert('Erro na conexão');
+    });
 
     this.user = new User();
   }

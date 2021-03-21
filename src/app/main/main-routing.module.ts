@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main.component';
 import { ProductComponent } from './product/product.component';
+import { LoginComponent } from '@src/app/user/login/login.component';
+import { NewUserComponent } from '@src/app/user/new-user/new-user.component';
+import { MarketComponent } from '@src/app/main/market/market.component';
 
 const routes: Routes = [
   {
@@ -10,13 +12,21 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: 'home',
-        component: HomeComponent
+        path: 'market',
+        component: MarketComponent
       },
       {
         path: 'product',
         component: ProductComponent
       },
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'new-user',
+        component: NewUserComponent
+      }
     ]
   },
 ];

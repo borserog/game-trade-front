@@ -1,0 +1,5 @@
+<div class="market-shell">
+  <app-market-search (searchTextChanged)="onSearchTextChanged($event)"></app-market-search>
+  <p>{{ searchText$ | async }}</p>
+  <app-market-list [productList]="productList$ | async"></app-market-list>
+</div>

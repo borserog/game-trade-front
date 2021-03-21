@@ -1,2 +1,16 @@
-<p>main works!</p>
-<router-outlet></router-outlet>
+<div class="main">
+  <div class="d-flex justify-content-around main__header">
+    <div class="main__header__logo">
+      <a [routerLink]="['/market']"><h2>GT</h2></a>
+    </div>
+    <div *ngIf="isLogged">
+      <button [routerLink]="['/login']">Login</button>
+      <button [routerLink]="['/new-user']">Novo Usuário</button>
+    </div>
+
+  </div>
+  <div class="main__content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
