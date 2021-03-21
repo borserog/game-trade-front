@@ -1,1 +1,35 @@
-<p>new-user works!</p>
+<div class="w-100 h-100 d-flex justify-content-center align-items-center">
+  <div
+    class="form-container bg-light d-flex justify-content-center align-items-center flex-column w-70 p-5 border border-primary">
+
+    <h2 class="mb-4">Cadastrar</h2>
+
+    <div class="mb-3 w-100">
+      <label for="firstName" class="form-label">Nome</label>
+      <input type="text" class="form-control" [(ngModel)]="user.firstName" id="firstName" placeholder="John">
+    </div>
+
+    <div class="mb-3 w-100">
+      <label for="lastName" class="form-label">Sobrenome</label>
+      <input type="text" class="form-control" [(ngModel)]="user.lastName" id="lastName" placeholder="Doe">
+    </div>
+
+    <div class="mb-3 w-100">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" [(ngModel)]="user.email" id="email" placeholder="email@example.com">
+    </div>
+
+    <div class="mb-3 w-100">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" [(ngModel)]="user.password" id="password">
+    </div>
+
+    <div class="mb-4 w-100">
+      <label for="confirm" class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" [(ngModel)]="confirmPassword" id="confirm">
+    </div>
+
+    <button class="btn btn-block btn-secondary submit-button" type="button"
+      (click)="handleSignupSubmit()">Cadastrar</button>
+  </div>
+</div>

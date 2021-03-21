@@ -1,2 +1,17 @@
-<p>login</p>
-<button type="button" [routerLink]="['../new-user']">New User</button>
+<div class="w-100 h-100 d-flex justify-content-center align-items-center">
+  <div class="form-container bg-light d-flex align-items-center flex-column w-70 p-5 border border-primary">
+    <h2 class="mb-4">Login</h2>
+
+    <div class="mb-3 w-100">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" [(ngModel)]="user.email" id="email" placeholder="email@example.com">
+    </div>
+
+    <div class="mb-4 w-100">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" [(ngModel)]="user.password" id="password">
+    </div>
+
+    <button class="btn btn-block btn-primary submit-button" type="button" (click)="handleLoginSubmit()">Entrar</button>
+  </div>
+</div>

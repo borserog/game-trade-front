@@ -1,0 +1,5 @@
+<div class="market-item">
+  <h1>{{ product.title }}</h1>
+  <p>{{ product?.description ? product.description : 'No description' }}</p>
+  <p>{{ product.price | currency }}</p>
+</div>
