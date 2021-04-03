@@ -1,5 +1,12 @@
 <div class="market-shell">
-  <app-market-search (searchTextChanged)="onSearchTextChanged($event)"></app-market-search>
+  <div class="market-shell__game-trade-image d-flex flex-column justify-content-center align-items-center">
+    <h1 class="text-light">GameTrade</h1>
+    <app-market-search (searchTextChanged)="onSearchTextChanged($event)"></app-market-search>
+  </div>
+
   <p>{{ searchText$ | async }}</p>
-  <app-market-list [productList]="productList$ | async"></app-market-list>
+
+  <app-market-list class="w-100 d-flex justify-content-center" [productList]="productList$ | async">
+  </app-market-list>
+
 </div>
