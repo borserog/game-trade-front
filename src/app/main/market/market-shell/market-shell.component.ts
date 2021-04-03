@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 
 export interface Product {
   id: string | number;
@@ -12,15 +12,17 @@ export interface Product {
 
 export enum EProductLabel {
   NOVO = 'NOVO',
-  USADO = 'USADO'
+  USADO = 'USADO',
+  SEMINOVO = 'SEMINOVO',
+  COLECIONADOR = 'COLECIONADOR'
 }
 
 export const products: Product[] = [
-  {id: 1, title: 'Kingdom Hearts', labels: EProductLabel.NOVO, price: 10.0},
-  {id: 2, title: 'Metal Gear', labels: EProductLabel.NOVO, price: 10.0},
-  {id: 3, title: 'Streets of Rage', labels: EProductLabel.NOVO, price: 10.0},
-  {id: 4, title: 'Sunset Riders', labels: EProductLabel.USADO, price: 30.0},
-  {id: 5, title: 'Death Stranding', labels: EProductLabel.NOVO, price: 20.0},
+  { id: 1, title: 'Kingdom Hearts', labels: EProductLabel.SEMINOVO, price: 10.0 },
+  { id: 2, title: 'Metal Gear', labels: EProductLabel.NOVO, price: 10.0 },
+  { id: 3, title: 'Streets of Rage', labels: EProductLabel.COLECIONADOR, price: 10.0 },
+  { id: 4, title: 'Sunset Riders', labels: EProductLabel.COLECIONADOR, price: 30.0 },
+  { id: 5, title: 'Death Stranding', labels: EProductLabel.NOVO, price: 20.0 },
 ];
 
 @Component({
@@ -42,11 +44,6 @@ export class MarketShellComponent implements OnInit {
     this.searchText$.subscribe((text) => {
       console.log(`game-trade.com/api/products?strSearch=${text}`);
     });
-  }
-
-
-  coisa(): void {
-    console.log('cliquei');
   }
 
   onSearchTextChanged(searchText: string): void {

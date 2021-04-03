@@ -1,16 +1,18 @@
-<div class="main">
-  <div class="d-flex justify-content-around main__header">
+<div class="vh-100 d-flex flex-column main">
+  <div class="bg-light px-2 d-flex justify-content-between align-items-center main__header">
     <div class="main__header__logo">
-      <a [routerLink]="['/market']"><h2>GT</h2></a>
-    </div>
-    <div *ngIf="isLogged">
-      <button [routerLink]="['/login']">Login</button>
-      <button [routerLink]="['/new-user']">Novo Usuário</button>
+      <a [routerLink]="['/market']">
+        <h4 class="m-0">GameTrade</h4>
+      </a>
     </div>
 
+    <div class="d-flex justify-content-center align-items-center" *ngIf="isLogged">
+      <a [routerLink]="['/login']">Login</a>
+      <a class="ml-3" [routerLink]="['/new-user']">Novo Usuário</a>
+    </div>
   </div>
-  <div class="main__content">
+
+  <div class="flex-fill bg-dark main__content">
     <router-outlet></router-outlet>
   </div>
 </div>
-

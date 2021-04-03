@@ -1,0 +1,15 @@
+.market-shell {
+
+  &__market-search-container {
+    height: 3rem;
+  }
+
+  &__game-trade-image {
+    background: 
+      linear-gradient(180deg, rgba(33,37,41,0.16850490196078427) 20%, rgba(52,58,64,1) 100%),
+      url("../../../../assets/login-bg.jpg");
+
+    height: 15rem;
+    position: relative;
+  }
+}

@@ -1,5 +1,8 @@
-<div class="market-item">
-  <h1>{{ product.title }}</h1>
-  <p>{{ product?.description ? product.description : 'No description' }}</p>
-  <p>{{ product.price | currency }}</p>
+<div class="card m-3" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ product.price | currency }}</h6>
+    <p class="card-text">{{ product.description }}</p>
+    <a href="#" class="card-link">Detalhes</a>
+  </div>
 </div>
