@@ -9,6 +9,7 @@ import { Product } from '@src/app/main/market/market-shell/market-shell.componen
 export class MarketListComponent implements OnInit {
 
   @Input() productList: Product[];
+  @Input() loading: boolean;
 
   constructor() { }
 

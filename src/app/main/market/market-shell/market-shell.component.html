@@ -6,7 +6,10 @@
 
   <p>{{ searchText$ | async }}</p>
 
-  <app-market-list class="w-100 d-flex justify-content-center" [productList]="productList$ | async">
+  <app-market-list
+    class="w-100 d-flex justify-content-center"
+    [loading]="loading$ | async"
+    [productList]="productList$ | async">
   </app-market-list>
 
 </div>
