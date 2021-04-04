@@ -1,8 +1,8 @@
 <div class="vh-100 d-flex flex-column main">
-  <div class="bg-dark px-2 d-flex justify-content-between align-items-center main__header">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100 d-flex justify-content-between">
+  <div class="bg-secondary px-2 d-flex justify-content-between align-items-center main__header">
+    <nav class="navbar navbar-expand-lg navbar-secondary bg-secondary w-100 d-flex justify-content-between">
       <a [routerLink]="['/market']">
-        <h4 class="m-0">GameTrade</h4>
+        <h4 class="m-0 text-light">GameTrade</h4>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,8 +11,8 @@
 
 
       <div class="d-flex justify-content-center align-items-center navbar-text" *ngIf="isLogged">
-        <a [routerLink]="['/login']">Login</a>
-        <a class="ml-3" [routerLink]="['/new-user']">Novo Usuário</a>
+        <a class="text-light" [routerLink]="['/login']">Login</a>
+        <a class="ml-3 text-light" [routerLink]="['/new-user']">Novo Usuário</a>
       </div>
     </nav>
   </div>
