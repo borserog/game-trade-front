@@ -1,5 +1,8 @@
 <div class="market-list w-75 d-flex flex-wrap">
-  <ng-container *ngFor="let product of productList">
-    <app-market-item [product]="product"></app-market-item>
+  <ng-container *ngFor="let product of productList; let i = index">
+    <app-market-item
+      class="product-item"
+      [ngStyle]="{'animation-delay': 200*i + 'ms'}"
+      [product]="product"></app-market-item>
   </ng-container>
 </div>

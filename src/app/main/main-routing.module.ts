@@ -9,6 +9,11 @@ import { MarketComponent } from '@src/app/main/market/market.component';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: '/market',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
     component: MainComponent,
     children: [
       {
