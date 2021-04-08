@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {UserService} from '@src/app/user/shared/user.service';
+import { UserService } from '@src/app/main/user/shared/user.service';
 import { User } from '../shared/model/user.model';
+import { BehaviorSubject, timer } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { AuthService } from '@src/app/core/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +13,14 @@ import { User } from '../shared/model/user.model';
 })
 export class LoginComponent implements OnInit {
   user: User;
+  errorMessage: string;
+
+  displayErrorMessage$ = new BehaviorSubject<boolean>(false);
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.user = new User();
   }
@@ -21,7 +28,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // TODO store logged user credentials
   handleLoginSubmit(): void {
     const credentials = {
       email: this.user.email,
@@ -29,16 +35,15 @@ export class LoginComponent implements OnInit {
     };
 
     this.userService.logIn(credentials).subscribe(async user => {
-      if (user) {
         alert(`Bem vindo, ${user.firstName}!`);
+        this.authService.onUserLoggedIn(user);
         await this.router.navigate(['/market']);
-        return;
-      }
 
-      alert('Não existe');
-    }, () => {
-      alert('Erro na conexão');
-    });
+      }, ({error}) => {
+        this.errorMessage = error.message;
+        this.displayErrorMessage$.next(true);
+      }
+    );
 
     this.user = new User();
   }

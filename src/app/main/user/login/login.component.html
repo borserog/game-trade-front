@@ -13,5 +13,9 @@
     </div>
 
     <button class="btn btn-block btn-primary submit-button" type="button" (click)="handleLoginSubmit()">Entrar</button>
+
+    <div *ngIf="displayErrorMessage$ | async"  class="alert alert-danger mt-3" role="alert">
+      {{ errorMessage }}
+    </div>
   </div>
 </div>

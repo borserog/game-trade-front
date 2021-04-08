@@ -10,10 +10,12 @@
       </button>
 
 
-      <div class="d-flex justify-content-center align-items-center navbar-text" *ngIf="isLogged">
-        <a class="text-light" [routerLink]="['/login']">Login</a>
-        <a class="ml-3 text-light" [routerLink]="['/new-user']">Novo Usuário</a>
-      </div>
+      <ng-container *ngIf="!(isLogged$ | async); else userLoggedIn">
+        <div class="d-flex justify-content-center align-items-center navbar-text">
+          <a class="text-light" [routerLink]="['/login']">Login</a>
+          <a class="ml-3 text-light" [routerLink]="['/new-user']">Novo Usuário</a>
+        </div>
+      </ng-container>
     </nav>
   </div>
 
@@ -21,3 +23,10 @@
     <router-outlet></router-outlet>
   </div>
 </div>
+
+<ng-template #userLoggedIn>
+  <div class="d-flex justify-content-center align-items-center navbar-text">
+    <a class="text-light" [routerLink]="['/profile']">Perfil</a>
+    <a class="ml-3 text-light" [routerLink]="['/market']" (click)="onLogout()">Logout</a>
+  </div>
+</ng-template>

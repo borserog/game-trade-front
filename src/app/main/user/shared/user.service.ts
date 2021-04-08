@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { User } from '@src/app/user/shared/model/user.model';
-import { map } from 'rxjs/operators';
+import { User } from '@src/app/main/user/shared/model/user.model';
+import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 interface LoginData {
@@ -14,7 +14,7 @@ interface LoginData {
   providedIn: 'root'
 })
 export class UserService {
-  private readonly RESOURCE_URL = environment.url + '/users';
+  private readonly RESOURCE_URL = environment.url + '/auth/login';
 
   constructor(
     private httpClient: HttpClient
@@ -22,14 +22,7 @@ export class UserService {
 
   logIn(credentials: LoginData): Observable<User> {
     const { email, password } = credentials;
-    return this.httpClient.get<User[]>(this.RESOURCE_URL, { params: { email, password } }).pipe(
-      map(response => response[0])
-    );
-
-    // return this.httpClient.post<User>(this.RESOURCE_URL,  credentials).pipe(
-    //   tap(console.log),
-    //   map(response => response[0])
-    // );
+    return this.httpClient.post<User>(this.RESOURCE_URL, { email, password });
   }
 
   signUp(user: User): Observable<User> {
