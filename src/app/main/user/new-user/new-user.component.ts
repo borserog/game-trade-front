@@ -18,8 +18,8 @@ export class NewUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  handleSignupSubmit() {
-    if(this.user.password !== this.confirmPassword) {
+  handleSignupSubmit(): void {
+    if (this.user.password !== this.confirmPassword) {
       console.log('Senha inválida');
       return;
     }
