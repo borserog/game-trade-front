@@ -7,42 +7,33 @@ import { NewUserComponent } from '@src/app/main/user/new-user/new-user.component
 import { MarketComponent } from '@src/app/main/market/market.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/market',
-    pathMatch: 'full'
-  },
-  {
-    path: 'market',
-    redirectTo: '/market',
-    pathMatch: 'full'
-  },
-  {
-    path: '',
-    component: MainComponent,
-    children: [
-      {
-        path: 'market',
-        component: MarketComponent
-      },
-      {
-        path: 'product',
-        component: ProductComponent
-      },
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: 'new-user',
-        component: NewUserComponent
-      }
-    ]
-  },
-];
+    {
+      path: '',
+      redirectTo: '/market',
+      pathMatch: 'full'
+    },
+    {
+      path: 'market',
+      component: MarketComponent
+    },
+    {
+      path: 'product',
+      component: ProductComponent
+    },
+    {
+      path: 'login',
+      component: LoginComponent
+    },
+    {
+      path: 'new-user',
+      component: NewUserComponent
+    }
+  ]
+;
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MainRoutingModule { }
+export class MainRoutingModule {
+}

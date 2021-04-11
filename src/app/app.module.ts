@@ -6,18 +6,20 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoreModule } from './core/core.module';
 import { UserModule } from './main/user/user.module';
+import { MainModule } from '@src/app/main/main.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    UserModule,
-    CoreModule,
-    NgbModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        UserModule,
+        CoreModule,
+        NgbModule,
+        MainModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

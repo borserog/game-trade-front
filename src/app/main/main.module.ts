@@ -9,6 +9,9 @@ import { MarketModule } from '@src/app/main/market/market.module';
 
 @NgModule({
   declarations: [MainComponent],
+  exports: [
+    MainComponent
+  ],
   imports: [
     CommonModule,
     MarketModule,
