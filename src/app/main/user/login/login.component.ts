@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '@src/app/main/user/shared/user.service';
+import { UserService } from '@src/app/main/user/shared/service/user.service';
 import { User } from '../shared/model/user.model';
 import { BehaviorSubject, timer } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';

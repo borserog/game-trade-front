@@ -1,23 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { ProductService } from '@src/app/main/market/shared/service/product.service';
+import { ProductService } from '@src/app/main/product/shared/service/product.service';
 import { finalize, map } from 'rxjs/operators';
-
-export interface Product {
-  id: string | number;
-  title: string;
-  description?: string;
-  imagePath?: string;
-  productItemLabel: EProductLabel;
-  price: number;
-}
-
-export enum EProductLabel {
-  NOVO = 'NOVO',
-  USADO = 'USADO',
-  SEMINOVO = 'SEMINOVO',
-  COLECIONADOR = 'COLECIONADOR'
-}
+import {EProductLabel, Product} from '@src/app/main/product/shared/model/product.model';
 
 export const products: Product[] = [
   { id: 1, title: 'Kingdom Hearts', imagePath: 'assets/kingdom.jpg', productItemLabel: EProductLabel.SEMINOVO, price: 10.0 },

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '@src/app/main/market/market-shell/market-shell.component';
+import { Product } from '@src/app/main/product/shared/model/product.model';
 
 @Component({
   selector: 'app-market-list',

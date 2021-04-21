@@ -14,7 +14,7 @@ interface LoginData {
   providedIn: 'root'
 })
 export class UserService {
-  private readonly RESOURCE_URL = environment.url + '/auth/login';
+  private readonly RESOURCE_URL = environment.url + '/auth';
 
   constructor(
     private httpClient: HttpClient
@@ -22,10 +22,10 @@ export class UserService {
 
   logIn(credentials: LoginData): Observable<User> {
     const { email, password } = credentials;
-    return this.httpClient.post<User>(this.RESOURCE_URL, { email, password });
+    return this.httpClient.post<User>(`${this.RESOURCE_URL}/login`, { email, password });
   }
 
   signUp(user: User): Observable<User> {
-    return this.httpClient.post<User>(this.RESOURCE_URL, user);
+    return this.httpClient.post<User>(`${this.RESOURCE_URL}/register`, user);
   }
 }

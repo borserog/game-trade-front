@@ -26,7 +26,22 @@
 
 <ng-template #userLoggedIn>
   <div class="d-flex justify-content-center align-items-center navbar-text">
-    <a class="text-light" [routerLink]="['profile']">Perfil</a>
-    <a class="ml-3 text-light" [routerLink]="['market']" (click)="onLogout()">Logout</a>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-secondary">
+        {{ loggedUser.firstName }}
+      </button>
+      <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+              data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+
+      <div class="dropdown-menu dropdown-menu-lg-right">
+        <a class="dropdown-item" [routerLink]="['profile']">Meus jogos</a>
+        <a class="dropdown-item" [routerLink]="['profile/edit']">Editar dados</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" [routerLink]="['market']" (click)="onLogout()">Sair</a>
+      </div>
+    </div>
   </div>
 </ng-template>
