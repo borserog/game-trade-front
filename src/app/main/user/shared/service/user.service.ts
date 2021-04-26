@@ -31,8 +31,8 @@ export class UserService {
 
   updateUser(user: User): Observable<User> {
     return this.httpClient.put<User>(`${environment.url}/users/${user.id}`, {
-      firstname: user.firstName,
-      lastname: user.lastName,
+      firstName: user.firstName,
+      lastName: user.lastName,
       email: user.email
     });
   }
