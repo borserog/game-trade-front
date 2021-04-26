@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '@src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product } from '@src/app/main/market/market-shell/market-shell.component';
+import { Product } from '@src/app/main/product/shared/model/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +16,9 @@ export class ProductService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.API_URL);
+  }
+
+  getUserProducts(userId: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.API_URL}/${userId}`);
   }
 }

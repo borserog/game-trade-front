@@ -5,6 +5,8 @@ import { ProductComponent } from './product/product.component';
 import { LoginComponent } from '@src/app/main/user/login/login.component';
 import { NewUserComponent } from '@src/app/main/user/new-user/new-user.component';
 import { MarketComponent } from '@src/app/main/market/market.component';
+import { ProfileComponent } from '@src/app/main/user/profile/profile.component';
+import {EditComponent} from "@src/app/main/user/profile/edit/edit.component";
 
 const routes: Routes = [
     {
@@ -27,6 +29,14 @@ const routes: Routes = [
     {
       path: 'new-user',
       component: NewUserComponent
+    },
+    {
+      path: 'profile',
+      component: ProfileComponent
+    },
+    {
+      path: 'profile/edit',
+      component: EditComponent
     }
   ]
 ;

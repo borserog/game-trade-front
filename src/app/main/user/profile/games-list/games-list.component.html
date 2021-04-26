@@ -1,0 +1,19 @@
+<ng-container *ngIf="!loading; else loadingData">
+  <div class="games-list d-flex flex-wrap">
+    <ng-container *ngFor="let product of gamesList; let i = index">
+      <app-games-item
+        class="games-item"
+        [ngStyle]="{'animation-delay': 200*i + 'ms'}"
+        [game]="product"></app-games-item>
+    </ng-container>
+  </div>
+</ng-container>
+
+
+<ng-template #loadingData>
+  <div class="w-100 d-flex justify-content-center mt-5">
+    <div class="spinner-border text-secondary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-template>
