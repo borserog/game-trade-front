@@ -1,0 +1,28 @@
+<div class="w-100 h-100 d-flex justify-content-center align-items-center">
+  <div
+    class="form-container bg-light d-flex justify-content-center align-items-center flex-column w-70 p-5 border border-primary">
+
+    <h2 class="mb-4">Atualizar dados</h2>
+
+    <div class="mb-3 d-flex justify-content-between w-100">
+      <div class="w-40">
+        <label for="firstName" class="form-label">Nome</label>
+        <input type="text" class="form-control" [(ngModel)]="user.firstName" id="firstName" placeholder="Novo nome">
+      </div>
+
+      <div class="w-40">
+        <label for="lastName" class="form-label">Sobrenome</label>
+        <input type="text" class="form-control" [(ngModel)]="user.lastName" id="lastName" placeholder="Novo sobrenome">
+      </div>
+    </div>
+
+
+    <div class="mb-3 w-100">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" [(ngModel)]="user.email" id="email" placeholder="Novo email">
+    </div>
+
+    <button class="btn btn-block btn-secondary submit-button" type="button"
+            (click)="handleUpdateSubmit()">Atualizar</button>
+  </div>
+</div>
