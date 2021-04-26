@@ -24,6 +24,8 @@ export class EditComponent implements OnInit {
   }
 
   handleUpdateSubmit(): void {
-    this.userService.updateUser(this.user);
+    this.userService.updateUser(this.user).subscribe(updatedUser => {
+      this.authService.onUserUpdate(updatedUser);
+    });
   }
 }

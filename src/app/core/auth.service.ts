@@ -15,6 +15,10 @@ export class AuthService {
   constructor() {
   }
 
+  onUserUpdate(user: User): void {
+    this.loggedUserSubject.next(user);
+  }
+
   onUserLoggedIn(user: User): void {
     this.userLoggedInSubject.next(true);
     this.loggedUserSubject.next(user);
