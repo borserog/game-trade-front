@@ -28,4 +28,12 @@ export class UserService {
   signUp(user: User): Observable<User> {
     return this.httpClient.post<User>(`${this.RESOURCE_URL}/register`, user);
   }
+
+  updateUser(user: User): Observable<User> {
+    return this.httpClient.post<User>(`${environment.url}/users/${user.id}`, {
+      firstname: user.firstName,
+      lastname: user.lastName,
+      email: user.email
+    });
+  }
 }

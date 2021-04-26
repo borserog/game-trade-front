@@ -19,4 +19,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  handleAddProductButton(): void {
+    return;
+  }
 }
