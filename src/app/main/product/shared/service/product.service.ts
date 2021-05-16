@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import { Product } from '@src/app/main/product/shared/model/product.model';
 
 @Injectable({
@@ -10,9 +10,20 @@ import { Product } from '@src/app/main/product/shared/model/product.model';
 export class ProductService {
   private readonly API_URL = environment.url + '/items';
 
+  private readonly productToEditSubject = new BehaviorSubject<Product>(null);
+  readonly productToEdit$ = this.productToEditSubject.asObservable();
+
   constructor(
     private http: HttpClient
   ) { }
+
+  setProductToEdit(product: Product): void {
+    this.productToEditSubject.next(product);
+  }
+
+  clearProduct(): void {
+    this.productToEditSubject.next(null);
+  }
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.API_URL);

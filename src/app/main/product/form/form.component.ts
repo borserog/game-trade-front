@@ -3,6 +3,8 @@ import { EProductLabel, Product } from '@src/app/main/product/shared/model/produ
 import { ProductService } from '@src/app/main/product/shared/service/product.service';
 import { AuthService } from '@src/app/core/auth.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form',
@@ -11,29 +13,42 @@ import { Router } from '@angular/router';
 })
 export class FormComponent implements OnInit {
   product: Product;
+  productToEdit$: Observable<Product>;
 
   constructor(
     private authService: AuthService,
     private productService: ProductService,
     private router: Router
   ) {
+    this.productToEdit$ = this.productService.productToEdit$;
   }
 
   ngOnInit(): void {
-    this.product = new Product();
+    this.productToEdit$.subscribe(product => {
+      if (product) {
+        this.product = product;
+      } else {
+        this.product = new Product();
+      }
+    });
   }
 
   productLabelKeys(): string[] {
     return Object.keys(EProductLabel);
   }
 
-  handleAddProduct(): void {
-    this.authService.loggedUser$.subscribe(user => {
-      this.product.price = Number(this.product.price);
-      this.productService.addProduct(this.product, user.id).subscribe(async () => {
-        await this.router.navigate(['/profile']);
-      });
+  handleSaveProduct(): void {
+    this.authService.loggedUser$.pipe(
+      switchMap(({ id }) => {
+        if (this.product.id) {
+          // TODO requisição para edição de produto
+        } else {
+          return this.productService.addProduct(this.product, id);
+        }
+      }),
+      take(1)
+    ).subscribe(async () => {
+      await this.router.navigate(['/profile']);
     });
   }
-
 }

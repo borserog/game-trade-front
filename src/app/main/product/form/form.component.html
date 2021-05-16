@@ -2,7 +2,7 @@
   <div
     class="form-container bg-light d-flex justify-content-center align-items-center flex-column w-70 p-5 border border-primary">
 
-    <h2 class="mb-4">Atualizar dados</h2>
+    <ng-container *ngIf="product.id; then editProduct else newProduct"></ng-container>
 
     <div class="mb-3 d-flex justify-content-between w-100">
       <div style="width: 45%">
@@ -26,7 +26,7 @@
       <input type="text" class="form-control" [(ngModel)]="product.imagePath" id="image" placeholder="URL">
     </div>
 
-    <div class="mb-3 d-flex align-items-center justi">
+    <div class="mb-3 d-flex align-items-center">
       <label class="form-label m-0 mr-3" for="productLabel">Categoria: </label>
       <select class="custom-select" id="productLabel" [(ngModel)]="product.productItemLabel">
         <option selected disabled>Choose...</option>
@@ -37,7 +37,14 @@
     </div>
 
     <button class="btn btn-block btn-secondary submit-button" type="button"
-            (click)="handleAddProduct()">Salvar</button>
+            (click)="handleSaveProduct()">Salvar</button>
   </div>
 </div>
 
+<ng-template #editProduct>
+  <h2 class="mb-4">Atualizar produto</h2>
+</ng-template>
+
+<ng-template #newProduct>
+  <h2 class="mb-4">Novo produto</h2>
+</ng-template>
