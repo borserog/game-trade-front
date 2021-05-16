@@ -5,6 +5,7 @@ export class Product {
   imagePath?: string;
   productItemLabel: EProductLabel;
   price: number;
+  usuario?: string;
 }
 
 export enum EProductLabel {

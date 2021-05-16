@@ -1,0 +1,29 @@
+.card-container {
+  position: relative;
+
+  &:hover .delete-button {
+    opacity: 1;
+  }
+
+  .delete-button {
+    opacity: 0;
+
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: none;
+
+    color: #FFFFFF;
+    background-color: red;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    transition: filter 0.2s, opacity 0.2s;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+}

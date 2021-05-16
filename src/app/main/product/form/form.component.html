@@ -1,0 +1,43 @@
+<div class="w-100 h-100 d-flex justify-content-center align-items-center">
+  <div
+    class="form-container bg-light d-flex justify-content-center align-items-center flex-column w-70 p-5 border border-primary">
+
+    <h2 class="mb-4">Atualizar dados</h2>
+
+    <div class="mb-3 d-flex justify-content-between w-100">
+      <div style="width: 45%">
+        <label for="title" class="form-label">Titulo</label>
+        <input type="text" class="form-control" [(ngModel)]="product.title" id="title" placeholder="Titulo do jogo">
+      </div>
+
+      <div style="width: 45%">
+        <label for="price" class="form-label">Preço</label>
+        <input type="text" class="form-control" [(ngModel)]="product.price" id="price" placeholder="Preço">
+      </div>
+    </div>
+
+    <div class="mb-3 w-100 form-group">
+      <label for="description">Descrição</label>
+      <textarea class="form-control" [(ngModel)]="product.description" id="description" rows="5"></textarea>
+    </div>
+
+    <div class="mb-3 w-100">
+      <label for="image" class="form-label">Link da imagem</label>
+      <input type="text" class="form-control" [(ngModel)]="product.imagePath" id="image" placeholder="URL">
+    </div>
+
+    <div class="mb-3 d-flex align-items-center justi">
+      <label class="form-label m-0 mr-3" for="productLabel">Categoria: </label>
+      <select class="custom-select" id="productLabel" [(ngModel)]="product.productItemLabel">
+        <option selected disabled>Choose...</option>
+        <option *ngFor="let productLabel of productLabelKeys()" value="{{ productLabel }}">
+          {{ productLabel }}
+        </option>
+      </select>
+    </div>
+
+    <button class="btn btn-block btn-secondary submit-button" type="button"
+            (click)="handleAddProduct()">Salvar</button>
+  </div>
+</div>
+

@@ -3,6 +3,7 @@
     <ng-container *ngFor="let product of gamesList; let i = index">
       <app-games-item
         class="games-item"
+        (removeEvent)="removeProductFromList($event)"
         [ngStyle]="{'animation-delay': 200*i + 'ms'}"
         [game]="product"></app-games-item>
     </ng-container>
