@@ -4,11 +4,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import { Product } from '@src/app/main/product/shared/model/product.model';
 
+export interface PurchaseRequestDTO {
+  productId: number;
+  loggedUserId: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   private readonly API_URL = environment.url + '/items';
+  // TODO inserir endereço da api para compra
+  private readonly PURCHASE_API_URL = environment.url + '/items';
 
   private readonly productToEditSubject = new BehaviorSubject<Product>(null);
   readonly productToEdit$ = this.productToEditSubject.asObservable();
@@ -55,5 +62,14 @@ export class ProductService {
 
   removeProduct(productId: number): Observable<null> {
     return this.http.delete<null>(`${this.API_URL}/${productId}`);
+  }
+
+  purchaseProduct(productId: number, loggedUserId: number): Observable<unknown> {
+    const requestDTO: PurchaseRequestDTO = {
+      productId,
+      loggedUserId
+    };
+
+    return this.http.post<unknown>(this.PURCHASE_API_URL, requestDTO);
   }
 }

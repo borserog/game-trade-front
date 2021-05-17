@@ -6,6 +6,7 @@ export class Product {
   productItemLabel: EProductLabel;
   price: number;
   usuario?: string;
+  isForSale?: boolean;
 }
 
 export enum EProductLabel {
