@@ -43,6 +43,16 @@ export class ProductService {
     });
   }
 
+  edit(product: Product, userId: number): Observable<Product> {
+    const headers = new HttpHeaders({
+      'user-id': userId.toString()
+    });
+
+    return this.http.patch<Product>(`${this.API_URL}`, product, {
+      headers
+    });
+  }
+
   removeProduct(productId: number): Observable<null> {
     return this.http.delete<null>(`${this.API_URL}/${productId}`);
   }
