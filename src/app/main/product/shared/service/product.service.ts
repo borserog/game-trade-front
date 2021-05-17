@@ -68,14 +68,13 @@ export class ProductService {
     const headers = new HttpHeaders({
       'user-id': loggedUserId.toString()
     });
-    console.log(loggedUserId)
-    console.log(productId)
+
     const requestDTO: PurchaseRequestDTO = {
       productId,
       loggedUserId
     };
 
-    return this.http.post<unknown>(`http://localhost:8080/items/update-game`, requestDTO, {
+    return this.http.post<unknown>(`${this.API_URL}/update-game`, requestDTO, {
       headers
     });
   }
