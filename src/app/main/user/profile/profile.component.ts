@@ -10,13 +10,15 @@ import { AuthService } from '@src/app/core/auth.service';
 export class ProfileComponent implements OnInit {
   loggedUser: User;
 
-  constructor(private authService: AuthService) {
-    this.authService.loggedUser$.subscribe(user => {
-      this.loggedUser = user;
-    });
+  constructor(
+    private authService: AuthService
+  ) {
   }
 
   ngOnInit(): void {
+    this.authService.loggedUser$.subscribe(user => {
+      this.loggedUser = user;
+    });
   }
 
   handleAddProductButton(): void {

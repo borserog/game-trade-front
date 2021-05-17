@@ -5,8 +5,9 @@
 
       <div class="d-flex flex-column text-light">
         <h3>Bem vindo, {{ loggedUser.firstName }}!</h3>
-        <button class="btn btn-block btn-secondary mt-3" type="button"
-                (click)="handleAddProductButton()">Adicionar produto</button>
+        <a class="btn btn-block btn-secondary mt-3" type="button" [routerLink]="['/product/form']">
+          Adicionar produto
+        </a>
       </div>
     </section>
 
