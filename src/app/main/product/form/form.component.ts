@@ -41,7 +41,7 @@ export class FormComponent implements OnInit {
     this.authService.loggedUser$.pipe(
       switchMap(({ id }) => {
         if (this.product.id) {
-          // TODO requisição para edição de produto
+          return this.productService.edit(this.product, id);
         } else {
           return this.productService.addProduct(this.product, id);
         }
