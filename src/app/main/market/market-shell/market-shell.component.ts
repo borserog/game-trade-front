@@ -1,16 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable,  Subject } from 'rxjs';
 import { ProductService } from '@src/app/main/product/shared/service/product.service';
-import { finalize, map } from 'rxjs/operators';
-import {EProductLabel, Product} from '@src/app/main/product/shared/model/product.model';
-
-export const products: Product[] = [
-  { id: 1, title: 'Kingdom Hearts', imagePath: 'assets/kingdom.jpg', productItemLabel: EProductLabel.SEMINOVO, price: 10.0 },
-  { id: 2, title: 'Metal Gear', imagePath: 'assets/mgs.jpg', productItemLabel: EProductLabel.NOVO, price: 10.0 },
-  { id: 3, title: 'Streets of Rage', imagePath: 'assets/street.jpg', productItemLabel: EProductLabel.COLECIONADOR, price: 10.0 },
-  { id: 4, title: 'Sunset Riders', imagePath: 'assets/sunset.jpg', productItemLabel: EProductLabel.COLECIONADOR, price: 30.0 },
-  { id: 5, title: 'Death Stranding', imagePath: 'assets/dstranding.jpg', productItemLabel: EProductLabel.NOVO, price: 20.0 },
-];
+import { filter, finalize, map, switchMap, take, tap } from 'rxjs/operators';
+import { Product } from '@src/app/main/product/shared/model/product.model';
+import { AuthService } from '@src/app/core/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-market-shell',
@@ -24,7 +18,9 @@ export class MarketShellComponent implements OnInit {
   searchText$ = new Subject();
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private authService: AuthService,
+    private router: Router
   ) {
   }
 
@@ -45,5 +41,22 @@ export class MarketShellComponent implements OnInit {
 
   onSearchTextChanged(searchText: string): void {
     this.searchText$.next(searchText);
+  }
+
+  onProductPurchased({id: productId}: Product): void {
+    this.authService.loggedUser$.pipe(
+      tap((user) => {
+        if (user == null) {
+          console.log('Show login toaster');
+        }
+      }),
+      take(1),
+      filter((user) => user !== null),
+      switchMap(({id: userId}) => {
+        return this.productService.purchaseProduct(Number(productId), userId);
+      })
+    ).subscribe(async () => {
+      await this.router.navigate(['/profile']);
+    });
   }
 }

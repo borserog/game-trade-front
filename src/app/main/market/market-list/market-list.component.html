@@ -4,7 +4,8 @@
       <app-market-item
         class="product-item"
         [ngStyle]="{'animation-delay': 200*i + 'ms'}"
-        [product]="product"></app-market-item>
+        [product]="product"
+      (productPurchased)="onProductPurchased($event)"></app-market-item>
     </ng-container>
   </div>
 </ng-container>

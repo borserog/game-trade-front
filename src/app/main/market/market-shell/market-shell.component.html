@@ -9,7 +9,8 @@
   <app-market-list
     class="w-100 d-flex justify-content-center"
     [loading]="loading$ | async"
-    [productList]="productList$ | async">
+    [productList]="productList$ | async"
+    (productPurchased)="onProductPurchased($event)">
   </app-market-list>
 
 </div>

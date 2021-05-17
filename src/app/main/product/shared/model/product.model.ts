@@ -1,10 +1,11 @@
-export class Product {
+export interface Product {
   id: string | number;
   title: string;
   description?: string;
   imagePath?: string;
   productItemLabel: EProductLabel;
   price: number;
+  isForSale: boolean;
 }
 
 export enum EProductLabel {

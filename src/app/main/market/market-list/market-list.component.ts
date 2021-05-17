@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Product } from '@src/app/main/product/shared/model/product.model';
 
 @Component({
@@ -6,18 +6,21 @@ import { Product } from '@src/app/main/product/shared/model/product.model';
   templateUrl: './market-list.component.html',
   styleUrls: ['./market-list.component.scss']
 })
-export class MarketListComponent implements OnInit {
+export class MarketListComponent {
 
   @Input() productList: Product[];
   @Input() loading: boolean;
 
-  constructor() { }
+  @Output() productPurchased = new EventEmitter<Product>();
 
-  ngOnInit(): void {
-  }
+  constructor() { }
 
   getTitle({ title }: Product): string {
     console.log('Method RUN: ', title);
     return title;
+  }
+
+  onProductPurchased(product: Product): void {
+    this.productPurchased.emit(product);
   }
 }

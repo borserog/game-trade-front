@@ -16,12 +16,12 @@ export class MainComponent implements OnInit {
     private authService: AuthService
   ) {
     this.isLogged$ = this.authService.userLoggedIn$;
-    this.authService.loggedUser$.subscribe(user => {
-      this.loggedUser = user;
-    });
   }
 
   ngOnInit(): void {
+    this.authService.loggedUser$.subscribe(user => {
+      this.loggedUser = user;
+    });
   }
 
   onLogout(): void {
