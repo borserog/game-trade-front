@@ -64,12 +64,18 @@ export class ProductService {
     return this.http.delete<null>(`${this.API_URL}/${productId}`);
   }
 
-  purchaseProduct(productId: number, loggedUserId: number): Observable<unknown> {
+  purchaseProduct(productId: number, loggedUserId: number): any {
+    const headers = new HttpHeaders({
+      'user-id': loggedUserId.toString()
+    });
+
     const requestDTO: PurchaseRequestDTO = {
       productId,
       loggedUserId
     };
 
-    return this.http.post<unknown>(this.PURCHASE_API_URL, requestDTO);
+    return this.http.post<unknown>(`${this.API_URL}/update-game`, requestDTO, {
+      headers
+    });
   }
 }
